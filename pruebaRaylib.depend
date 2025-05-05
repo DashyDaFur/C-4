@@ -1,0 +1,284 @@
+# depslib dependency file v1.0
+1745939575 source:/home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/main.cpp
+	<list>
+	"./lraylib/raylib-cpp.hpp"
+	"wabbit_alpha.h"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/raylib-cpp.hpp
+	"./AudioDevice.hpp"
+	"./AudioStream.hpp"
+	"./AutomationEventList.hpp"
+	"./BoundingBox.hpp"
+	"./Camera2D.hpp"
+	"./Camera3D.hpp"
+	"./Color.hpp"
+	"./FileData.hpp"
+	"./FileText.hpp"
+	"./Font.hpp"
+	"./Functions.hpp"
+	"./Gamepad.hpp"
+	"./Image.hpp"
+	"./Keyboard.hpp"
+	"./Material.hpp"
+	"./Matrix.hpp"
+	"./Mesh.hpp"
+	"./Model.hpp"
+	"./ModelAnimation.hpp"
+	"./Mouse.hpp"
+	"./Music.hpp"
+	"./Ray.hpp"
+	"./RayCollision.hpp"
+	"./RaylibException.hpp"
+	"./Rectangle.hpp"
+	"./RenderTexture.hpp"
+	"./Shader.hpp"
+	"./Sound.hpp"
+	"./Text.hpp"
+	"./Texture.hpp"
+	"./TextureUnmanaged.hpp"
+	"./Touch.hpp"
+	"./Vector2.hpp"
+	"./Vector3.hpp"
+	"./Vector4.hpp"
+	"./VrStereoConfig.hpp"
+	"./Wave.hpp"
+	"./Window.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/AudioDevice.hpp
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/RaylibException.hpp
+	<stdexcept>
+	<string>
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/raylib.hpp
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/raylib-cpp-utils.hpp
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/AudioStream.hpp
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/AutomationEventList.hpp
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/BoundingBox.hpp
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Camera2D.hpp
+	"./Vector2.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Vector2.hpp
+	<cmath>
+	<string>
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+	"./raymath.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/raymath.hpp
+	"raymath.h"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Camera3D.hpp
+	"./Vector3.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Vector3.hpp
+	<cmath>
+	<string>
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+	"./raymath.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Color.hpp
+	<string>
+	"./Vector4.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Vector4.hpp
+	<cmath>
+	<utility>
+	<string>
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+	"./raymath.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/FileData.hpp
+	<string>
+	<utility>
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/FileText.hpp
+	<string>
+	<utility>
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Font.hpp
+	<string>
+	"./RaylibException.hpp"
+	"./TextureUnmanaged.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/TextureUnmanaged.hpp
+	<string>
+	"./Image.hpp"
+	"./Material.hpp"
+	"./RaylibException.hpp"
+	"./Vector2.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Image.hpp
+	<string>
+	"./Color.hpp"
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Material.hpp
+	<string>
+	<vector>
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Functions.hpp
+	<string>
+	<vector>
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Gamepad.hpp
+	<string>
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Keyboard.hpp
+	"./Functions.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Matrix.hpp
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+	"./raymath.hpp"
+	<cmath>
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Mesh.hpp
+	<string>
+	<vector>
+	"./MeshUnmanaged.hpp"
+	"./Model.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/MeshUnmanaged.hpp
+	<string>
+	<vector>
+	"./BoundingBox.hpp"
+	"./Matrix.hpp"
+	"./Model.hpp"
+	"./raylib-cpp-utils.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Model.hpp
+	<string>
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/ModelAnimation.hpp
+	<string>
+	<vector>
+	"./Mesh.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Mouse.hpp
+	"./Functions.hpp"
+	"./Vector2.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Music.hpp
+	<string>
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Ray.hpp
+	"./RayCollision.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/RayCollision.hpp
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Rectangle.hpp
+	"./Vector2.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/RenderTexture.hpp
+	"./TextureUnmanaged.hpp"
+	"./raylib-cpp-utils.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Shader.hpp
+	<string>
+	"ShaderUnmanaged.hpp"
+	"Texture.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/ShaderUnmanaged.hpp
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+	<rlgl.h>
+	<string>
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Texture.hpp
+	"./TextureUnmanaged.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Sound.hpp
+	<string>
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Text.hpp
+	<string>
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Touch.hpp
+	"./Functions.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/VrStereoConfig.hpp
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Wave.hpp
+	<string>
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1745854003 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/Window.hpp
+	<string>
+	"./RaylibException.hpp"
+	"./Vector2.hpp"
+	"./raylib.hpp"
+
+1745877106 /home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/wabbit_alpha.h
+

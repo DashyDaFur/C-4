@@ -1,0 +1,6 @@
+#ifndef ESCENAS_HPP_INCLUDED
+#define ESCENAS_HPP_INCLUDED
+
+void FondoBlanco();
+
+#endif // ESCENAS_HPP_INCLUDED

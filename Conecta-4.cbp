@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="pruebaRaylib" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/pruebaRaylib" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/pruebaRaylib" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="lraylib" />
+			<Add directory="/home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/" />
+		</Compiler>
+		<Linker>
+			<Add library="raylib" />
+		</Linker>
+		<Unit filename="Escenas.cpp" />
+		<Unit filename="Escenas.hpp" />
+		<Unit filename="lraylib/AudioDevice.hpp" />
+		<Unit filename="lraylib/AudioStream.hpp" />
+		<Unit filename="lraylib/AutomationEventList.hpp" />
+		<Unit filename="lraylib/BoundingBox.hpp" />
+		<Unit filename="lraylib/Camera2D.hpp" />
+		<Unit filename="lraylib/Camera3D.hpp" />
+		<Unit filename="lraylib/Color.hpp" />
+		<Unit filename="lraylib/FileData.hpp" />
+		<Unit filename="lraylib/FileText.hpp" />
+		<Unit filename="lraylib/Font.hpp" />
+		<Unit filename="lraylib/Functions.hpp" />
+		<Unit filename="lraylib/Gamepad.hpp" />
+		<Unit filename="lraylib/Image.hpp" />
+		<Unit filename="lraylib/Keyboard.hpp" />
+		<Unit filename="lraylib/Material.hpp" />
+		<Unit filename="lraylib/Matrix.hpp" />
+		<Unit filename="lraylib/Mesh.hpp" />
+		<Unit filename="lraylib/MeshUnmanaged.hpp" />
+		<Unit filename="lraylib/Model.hpp" />
+		<Unit filename="lraylib/ModelAnimation.hpp" />
+		<Unit filename="lraylib/Mouse.hpp" />
+		<Unit filename="lraylib/Music.hpp" />
+		<Unit filename="lraylib/Ray.hpp" />
+		<Unit filename="lraylib/RayCollision.hpp" />
+		<Unit filename="lraylib/RaylibException.hpp" />
+		<Unit filename="lraylib/Rectangle.hpp" />
+		<Unit filename="lraylib/RenderTexture.hpp" />
+		<Unit filename="lraylib/Shader.hpp" />
+		<Unit filename="lraylib/ShaderUnmanaged.hpp" />
+		<Unit filename="lraylib/Sound.hpp" />
+		<Unit filename="lraylib/Text.hpp" />
+		<Unit filename="lraylib/Texture.hpp" />
+		<Unit filename="lraylib/TextureUnmanaged.hpp" />
+		<Unit filename="lraylib/Touch.hpp" />
+		<Unit filename="lraylib/Vector2.hpp" />
+		<Unit filename="lraylib/Vector3.hpp" />
+		<Unit filename="lraylib/Vector4.hpp" />
+		<Unit filename="lraylib/VrStereoConfig.hpp" />
+		<Unit filename="lraylib/Wave.hpp" />
+		<Unit filename="lraylib/Window.hpp" />
+		<Unit filename="lraylib/raylib-cpp-utils.hpp" />
+		<Unit filename="lraylib/raylib-cpp.hpp" />
+		<Unit filename="lraylib/raylib.hpp" />
+		<Unit filename="lraylib/raymath.hpp" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
