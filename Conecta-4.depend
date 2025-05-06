@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1746459778 source:/home/lein/Documentos/Code/Codeblocks/cbp/C-4/Escenas.cpp
+1746473784 source:/home/lein/Documentos/Code/Codeblocks/cbp/C-4/Escenas.cpp
 	"./lraylib/raylib-cpp.hpp"
 	"Escenas.hpp"
 
@@ -279,7 +279,7 @@
 	"./Vector2.hpp"
 	"./raylib.hpp"
 
-1746459037 /home/lein/Documentos/Code/Codeblocks/cbp/C-4/Escenas.hpp
+1746467180 /home/lein/Documentos/Code/Codeblocks/cbp/C-4/Escenas.hpp
 
 1746459780 source:/home/lein/Documentos/Code/Codeblocks/cbp/C-4/main.cpp
 	"./lraylib/raylib-cpp.hpp"

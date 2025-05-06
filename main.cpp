@@ -5,86 +5,66 @@
 
 #include "Escenas.hpp"
 
+
+// Tamaño de la pantalla
+const int screenWidth = 1000;
+const int screenHeight = 650;
+// Tamaño de los botones
+
+enum ButtonState {NORMAL,PRESSED,HOVER};
+
 int main()
 {
-    // Tamaño de la pantalla
-    const int screenWidth = 800;
-    const int screenHeight = 450;
+    bool title = true;
+    ButtonState estado;
 
-    raylib::Window window(screenWidth, screenHeight, "Juego wawaw");
-
+    raylib::Window window(screenWidth, screenHeight, "Conecta 4");
     SetTargetFPS(60);
 
-    Rectangle buttons[4] = {
-        { screenWidth/2 - 100, 150, 200, 50 },  // Botón 1
-        { screenWidth/2 - 100, 250, 200, 50 },  // Botón 2
-        { screenWidth/2 - 100, 350, 200, 50 },  // Botón 3
-        { screenWidth/2 - 100, 450, 200, 50 }   // Botón 4
-    };
+    raylib::Texture2D botonesTexture("resources/botones.png");
 
-    const char* buttonTexts[4] = {
-        "OPCIÓN 1",
-        "OPCIÓN 2",
-        "OPCIÓN 3",
-        "SALIR"
-    };
+    Rectangle botones[4];
+    for (int i = 0; i < 4; i++){
+        botones[i] = { (float)(screenWidth - buttonWidth) / 2, 200 + i * 80, (float)buttonWidth, (float)buttonHeight};
+    }
 
-    Color buttonColor = BLUE;
-    Color hoverColor = SKYBLUE;
-    int selectedOption = -1;
+    while (!WindowShouldClose()){
 
-    SetTargetFPS(60);
-
-    // Bucle principal del juego, si se preciona ESC se cierra
-    while (!WindowShouldClose()) {
-
-
-        for (int i = 0; i < 4; i++) {
-            if (CheckCollisionPointRec(GetMousePosition(), buttons[i])) {
-                if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-                    selectedOption = i;
-                }
-            }
-        }
-
-        // Dibujado
         BeginDrawing();
+        ClearBackground(RAYWHITE);
 
-            ClearBackground(RAYWHITE);
+        if (title) DrawText("Conecta 4", screenWidth / 2 - MeasureText("Conecta 4", 50) / 2, 50, 50, DARKBLUE);
 
-            // Título
-            DrawText("MENÚ PRINCIPAL", screenWidth/2 - MeasureText("MENÚ PRINCIPAL", 40)/2, 50, 40, DARKGRAY);
+        Vector2 mouse = GetMousePosition();
 
-            // Dibujar botones
-            for (int i = 0; i < 4; i++) {
-                Color currentColor = CheckCollisionPointRec(GetMousePosition(), buttons[i]) ? hoverColor : buttonColor;
-                DrawRectangleRec(buttons[i], currentColor);
-                DrawRectangleLinesEx(buttons[i], 2, BLACK);
+        for (int i = 0; i < 4; i++){
+            estado = NORMAL;
 
-                // Centrar texto en los botones
-                int textWidth = MeasureText(buttonTexts[i], 20);
-                DrawText(buttonTexts[i],
-                        buttons[i].x + buttons[i].width/2 - textWidth/2,
-                        buttons[i].y + buttons[i].height/2 - 10,
-                        20, WHITE);
-            }
+            if (CheckCollisionPointRec(mouse, botones[i])){
+                if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) estado = PRESSED;
+                else estado = HOVER;
 
-            // Mostrar opción seleccionada
-            if (selectedOption != -1) {
-                const char* message = TextFormat("Seleccionaste: %s", buttonTexts[selectedOption]);
-                DrawText(message, screenWidth/2 - MeasureText(message, 20)/2, 520, 20, DARKGRAY);
-
-                // Si se seleccionó salir, cerrar la ventana
-                if (selectedOption == 3) {
-                    CloseWindow();
-                    return 0;
+                if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
+                    if (i == 0){
+                        title = false;
+                        botonesTexture.Unload();
+                        EscenaJuego();
+                        title = true;
+                        raylib::Texture2D botonesTexture("resources/botones.png");
+                    }
+                    else if (i == 1) EscenaInstrucciones();
+                    else if (i == 2) EscenaCreditos();
+                    else if (i == 3) CloseWindow();
                 }
             }
+
+            Rectangle src = { 0, (float)(estado * buttonHeight), (float)buttonWidth, (float)buttonHeight };
+            DrawTextureRec(botonesTexture, src, { botones[i].x, botones[i].y }, WHITE);
+        }
 
         EndDrawing();
     }
 
-    CloseWindow();
+    botonesTexture.Unload();
     return 0;
 }
-
