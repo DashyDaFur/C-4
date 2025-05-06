@@ -1,7 +1,7 @@
 //linux
-#include "./lraylib/raylib-cpp.hpp"
+//#include "./lraylib/raylib-cpp.hpp"
 //windows
-// #include "raylib.h"
+#include "raylib.h"
 
 #include "Escenas.hpp"
 
@@ -20,10 +20,12 @@ int main()
     bool title = true;
     ButtonState estado;
 
-    raylib::Window window(screenWidth, screenHeight, "Conecta 4");
+    //raylib::Window window(screenWidth, screenHeight, "Conecta 4");    // LINUX
+    InitWindow(screenWidth, screenHeight, "Juego wawaw");   // WINDOWS
     SetTargetFPS(60);
 
-    raylib::Texture2D botonesTexture("resources/botones.png");
+    //raylib::Texture2D botonesTexture("resources/botones.png");    // LINUX
+    Texture2D botonesTexture = LoadTexture("resources/botones.png");    // WINDOWS
 
     Rectangle botones[4];
     for (int i = 0; i < 4; i++){
@@ -49,8 +51,10 @@ int main()
                 if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
                     if (i == 0){
                         title = false;
-                        botonesTexture.Unload();
-                        EscenaJuego();
+                        //botonesTexture.Unload();  // LNUX
+                        //EscenaJuego();    // LINUX
+                        UnloadTexture(botonesTexture);  // WINDOWS
+                        EscenaJuego();  // WINDOWS
                         title = true;
                     }
                     else if (i == 1) EscenaInstrucciones();
@@ -66,5 +70,11 @@ int main()
         EndDrawing();
     }
 
+    // Descargar textura antes de salir
+    UnloadTexture(botonesTexture);  // WINDOWS
+    CloseWindow();  // WINDOWS
+    // prueb
+
     return 0;
 }
+
