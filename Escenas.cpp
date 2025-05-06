@@ -9,10 +9,9 @@ void EscenaJuego()
 {
     while (!WindowShouldClose()){
         BeginDrawing();
-        ClearBackground(LIGHTGRAY);
+        ClearBackground(WHITE);
 
-        DrawText("¡Estás en el juego!", 300, 300, 30, DARKBLUE);
-        DrawText("Haz clic para volver al menú", 270, 340, 20, DARKGRAY);
+        DrawText("Haz clic para volver al menu", 270, 340, 20, DARKGRAY);
 
         EndDrawing();
 

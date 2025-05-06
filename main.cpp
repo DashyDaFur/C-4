@@ -10,6 +10,8 @@
 const int screenWidth = 1000;
 const int screenHeight = 650;
 // Tamaño de los botones
+const int buttonWidth = 300;
+const int buttonHeight = 60;
 
 enum ButtonState {NORMAL,PRESSED,HOVER};
 
