@@ -8,10 +8,15 @@
 void EscenaJuego()
 {
     while (!WindowShouldClose()){
+
+
+
         BeginDrawing();
+
         ClearBackground(WHITE);
 
-        DrawText("Haz clic para volver al menu", 270, 340, 20, DARKGRAY);
+
+
 
         EndDrawing();
 

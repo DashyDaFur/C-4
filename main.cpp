@@ -52,7 +52,6 @@ int main()
                         botonesTexture.Unload();
                         EscenaJuego();
                         title = true;
-                        raylib::Texture2D botonesTexture("resources/botones.png");
                     }
                     else if (i == 1) EscenaInstrucciones();
                     else if (i == 2) EscenaCreditos();
@@ -67,6 +66,5 @@ int main()
         EndDrawing();
     }
 
-    botonesTexture.Unload();
     return 0;
 }

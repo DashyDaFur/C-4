@@ -30,12 +30,15 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-			<Add directory="lraylib" />
-			<Add directory="/home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/" />
+			<Add directory="C:/raylib/raylib/src" />
 		</Compiler>
 		<Linker>
+			<Add option="-static" />
 			<Add library="raylib" />
+			<Add library="opengl32" />
+			<Add library="gdi32" />
+			<Add library="winm" />
+			<Add directory="C:/raylib/raylib/src" />
 		</Linker>
 		<Unit filename="Escenas.cpp" />
 		<Unit filename="Escenas.hpp" />
