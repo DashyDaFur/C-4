@@ -3,14 +3,14 @@
 enum ButtonState {NORMAL,PRESSED,HOVER};
 
 class BotonesMenu {
-    public:
         Rectangle hitbox;
         ButtonState estado = NORMAL;
         int indice;
+public:
         static Texture2D textura;
     
         BotonesMenu();
-        BotonesMenu(int index, int x, int y);
+        BotonesMenu(int i, float x, float y);
     
         bool Update(Vector2 mouse);
         void Draw();

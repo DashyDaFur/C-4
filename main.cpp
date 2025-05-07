@@ -15,13 +15,13 @@ int main()
 {
     bool title = true;
 
-    //raylib::Window window(screenWidth, screenHeight, "Conecta 4");    // LINUX
-    InitWindow(screenWidth, screenHeight, "Juego wawaw");   // WINDOWS
+    InitWindow(screenWidth, screenHeight, "Conecta 4");
     SetTargetFPS(60);
 
-    //raylib::Texture2D botonesTexture("resources/botones.png");    // LINUX
-    BotonesMenu::CargarTextura("resources/botones.png");    // WINDOWS
+    // --- Carga textura de los botones ---
+    BotonesMenu::CargarTextura("resources/botones.png");
 
+    // --- Establece el indice, posicion en x y posicion en y de los botones ---
     BotonesMenu botones[4] = {
         BotonesMenu(0, (screenWidth - 300) / 2, 200),
         BotonesMenu(1, (screenWidth - 300) / 2, 280),
@@ -45,10 +45,8 @@ int main()
                     switch(select){
                     case 0:
                         title = false;
-                        //botonesTexture.Unload();  // LNUX
-                        //EscenaJuego();    // LINUX
-                        BotonesMenu::DescargarTextura(); // WINDOWS
-                        EscenaJuego();  // WINDOWS
+                        BotonesMenu::DescargarTextura();
+                        EscenaJuego();
                         BotonesMenu::CargarTextura("resources/botones.png");
                         title = true;
                         break;
@@ -70,11 +68,8 @@ int main()
         EndDrawing();
     }
 
-    // Descargar textura antes de salir
-    BotonesMenu::DescargarTextura();  // WINDOWS
-    CloseWindow();  // WINDOWS
+    BotonesMenu::DescargarTextura();
 
-    // prueba
-
+    CloseWindow();  
     return 0;
 }
