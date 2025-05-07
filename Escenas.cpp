@@ -1,7 +1,7 @@
 //linux
-#include "./lraylib/raylib-cpp.hpp"
+//#include "./lraylib/raylib-cpp.hpp"
 //windows
-// #include "raylib.h"
+#include "raylib.h"
 
 #include "Escenas.hpp"
 

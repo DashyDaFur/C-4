@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Conecta-4" />
+		<Option title="pruebaRaylib" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -30,14 +30,22 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="lraylib" />
+			<Add directory="/home/lein/Documentos/Code/Codeblocks/cbp/pruebaRaylib/lraylib/" />
 			<Add directory="C:/raylib/raylib/src" />
 		</Compiler>
 		<Linker>
+			<Add option="-static-libstdc++" />
+			<Add option="-static-libgcc" />
 			<Add option="-static" />
+			<Add option="-lwinpthread" />
+			<Add option="-lws2_32" />
 			<Add library="raylib" />
+			<Add library="winmm" />
 			<Add library="opengl32" />
 			<Add library="gdi32" />
-			<Add library="winm" />
+			<Add library="user32" />
 			<Add directory="C:/raylib/raylib/src" />
 		</Linker>
 		<Unit filename="Escenas.cpp" />

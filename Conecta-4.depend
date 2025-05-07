@@ -285,3 +285,329 @@
 	"./lraylib/raylib-cpp.hpp"
 	"Escenas.hpp"
 
+1746573763 source:c:\users\corde\onedrive\escritorio\programacion\c-4\escenas.cpp
+	"raylib.h"
+	"Escenas.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\raylib-cpp.hpp
+	"./AudioDevice.hpp"
+	"./AudioStream.hpp"
+	"./AutomationEventList.hpp"
+	"./BoundingBox.hpp"
+	"./Camera2D.hpp"
+	"./Camera3D.hpp"
+	"./Color.hpp"
+	"./FileData.hpp"
+	"./FileText.hpp"
+	"./Font.hpp"
+	"./Functions.hpp"
+	"./Gamepad.hpp"
+	"./Image.hpp"
+	"./Keyboard.hpp"
+	"./Material.hpp"
+	"./Matrix.hpp"
+	"./Mesh.hpp"
+	"./Model.hpp"
+	"./ModelAnimation.hpp"
+	"./Mouse.hpp"
+	"./Music.hpp"
+	"./Ray.hpp"
+	"./RayCollision.hpp"
+	"./RaylibException.hpp"
+	"./Rectangle.hpp"
+	"./RenderTexture.hpp"
+	"./Shader.hpp"
+	"./Sound.hpp"
+	"./Text.hpp"
+	"./Texture.hpp"
+	"./TextureUnmanaged.hpp"
+	"./Touch.hpp"
+	"./Vector2.hpp"
+	"./Vector3.hpp"
+	"./Vector4.hpp"
+	"./VrStereoConfig.hpp"
+	"./Wave.hpp"
+	"./Window.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\audiodevice.hpp
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\raylibexception.hpp
+	<stdexcept>
+	<string>
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\raylib.hpp
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\raylib-cpp-utils.hpp
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\audiostream.hpp
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\automationeventlist.hpp
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\boundingbox.hpp
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\camera2d.hpp
+	"./Vector2.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\vector2.hpp
+	<cmath>
+	<string>
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+	"./raymath.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\raymath.hpp
+	"raymath.h"
+
+1746459849 c:\raylib\raylib\src\raymath.h
+	<math.h>
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\camera3d.hpp
+	"./Vector3.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\vector3.hpp
+	<cmath>
+	<string>
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+	"./raymath.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\color.hpp
+	<string>
+	"./Vector4.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\vector4.hpp
+	<cmath>
+	<utility>
+	<string>
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+	"./raymath.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\filedata.hpp
+	<string>
+	<utility>
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\filetext.hpp
+	<string>
+	<utility>
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\font.hpp
+	<string>
+	"./RaylibException.hpp"
+	"./TextureUnmanaged.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\textureunmanaged.hpp
+	<string>
+	"./Image.hpp"
+	"./Material.hpp"
+	"./RaylibException.hpp"
+	"./Vector2.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\image.hpp
+	<string>
+	"./Color.hpp"
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\material.hpp
+	<string>
+	<vector>
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\functions.hpp
+	<string>
+	<vector>
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\gamepad.hpp
+	<string>
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\keyboard.hpp
+	"./Functions.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\matrix.hpp
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+	"./raymath.hpp"
+	<cmath>
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\mesh.hpp
+	<string>
+	<vector>
+	"./MeshUnmanaged.hpp"
+	"./Model.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\meshunmanaged.hpp
+	<string>
+	<vector>
+	"./BoundingBox.hpp"
+	"./Matrix.hpp"
+	"./Model.hpp"
+	"./raylib-cpp-utils.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\model.hpp
+	<string>
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\modelanimation.hpp
+	<string>
+	<vector>
+	"./Mesh.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\mouse.hpp
+	"./Functions.hpp"
+	"./Vector2.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\music.hpp
+	<string>
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\ray.hpp
+	"./RayCollision.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\raycollision.hpp
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\rectangle.hpp
+	"./Vector2.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\rendertexture.hpp
+	"./TextureUnmanaged.hpp"
+	"./raylib-cpp-utils.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\shader.hpp
+	<string>
+	"ShaderUnmanaged.hpp"
+	"Texture.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\shaderunmanaged.hpp
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+	<rlgl.h>
+	<string>
+
+1746459849 c:\raylib\raylib\src\rlgl.h
+	<stdbool.h>
+	<OpenGL/gl.h>
+	<OpenGL/glext.h>
+	<GL/gl.h>
+	"external/glad.h"
+	<GLES3/gl3.h>
+	<GLES2/gl2ext.h>
+	"external/glad_gles2.h"
+	<GLES2/gl2.h>
+	<GLES2/gl2ext.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+
+1746459848 c:\raylib\raylib\src\external\glad.h
+	<winapifamily.h>
+	<stdint.h>
+	<inttypes.h>
+	<stdint.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1746459848 c:\raylib\raylib\src\external\glad_gles2.h
+	<winapifamily.h>
+	<stdint.h>
+	<inttypes.h>
+	<stdint.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\texture.hpp
+	"./TextureUnmanaged.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\sound.hpp
+	<string>
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\text.hpp
+	<string>
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\touch.hpp
+	"./Functions.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\vrstereoconfig.hpp
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\wave.hpp
+	<string>
+	"./RaylibException.hpp"
+	"./raylib-cpp-utils.hpp"
+	"./raylib.hpp"
+
+1746460697 c:\users\corde\onedrive\escritorio\programacion\c-4\lraylib\window.hpp
+	<string>
+	"./RaylibException.hpp"
+	"./Vector2.hpp"
+	"./raylib.hpp"
+
+1746573763 c:\users\corde\onedrive\escritorio\programacion\c-4\escenas.hpp
+
+1746592950 source:c:\users\corde\onedrive\escritorio\programacion\c-4\main.cpp
+	"raylib.h"
+	"Escenas.hpp"
+
+1746459849 c:\raylib\raylib\src\raylib.h
+	<stdarg.h>
+	<stdbool.h>
+
