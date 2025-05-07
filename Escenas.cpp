@@ -9,8 +9,6 @@ void EscenaJuego()
 {
     while (!WindowShouldClose()){
 
-
-
         BeginDrawing();
 
         ClearBackground(WHITE);
