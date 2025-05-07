@@ -3,34 +3,31 @@
 //windows
 #include "raylib.h"
 
+#include "BotonesMenu.hpp"
 #include "Escenas.hpp"
 
 
 // Tamaño de la pantalla
 const int screenWidth = 1000;
 const int screenHeight = 650;
-// Tamaño de los botones
-const int buttonWidth = 300;
-const int buttonHeight = 60;
-
-enum ButtonState {NORMAL,PRESSED,HOVER};
 
 int main()
 {
     bool title = true;
-    ButtonState estado;
 
     //raylib::Window window(screenWidth, screenHeight, "Conecta 4");    // LINUX
     InitWindow(screenWidth, screenHeight, "Juego wawaw");   // WINDOWS
     SetTargetFPS(60);
 
     //raylib::Texture2D botonesTexture("resources/botones.png");    // LINUX
-    Texture2D botonesTexture = LoadTexture("resources/botones.png");    // WINDOWS
+    BotonesMenu::CargarTextura("resources/botones.png");    // WINDOWS
 
-    Rectangle botones[4];
-    for (int i = 0; i < 4; i++){
-        botones[i] = { (float)(screenWidth - buttonWidth) / 2, 200 + i * 80, (float)buttonWidth, (float)buttonHeight};
-    }
+    BotonesMenu botones[4] = {
+        BotonesMenu(0, (screenWidth - 300) / 2, 200),
+        BotonesMenu(1, (screenWidth - 300) / 2, 280),
+        BotonesMenu(2, (screenWidth - 300) / 2, 360),
+        BotonesMenu(3, (screenWidth - 300) / 2, 440)
+    };
 
     while (!WindowShouldClose()){
 
@@ -41,37 +38,40 @@ int main()
 
         Vector2 mouse = GetMousePosition();
 
-        for (int i = 0; i < 4; i++){
-            estado = NORMAL;
+        for (int select = 0; select < 4; select++){
 
-            if (CheckCollisionPointRec(mouse, botones[i])){
-                if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) estado = PRESSED;
-                else estado = HOVER;
+            if (botones[select].Update(mouse)){
 
-                if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
-                    if (i == 0){
+                    switch(select){
+                    case 0:
                         title = false;
                         //botonesTexture.Unload();  // LNUX
                         //EscenaJuego();    // LINUX
-                        UnloadTexture(botonesTexture);  // WINDOWS
+                        BotonesMenu::DescargarTextura(); // WINDOWS
                         EscenaJuego();  // WINDOWS
+                        BotonesMenu::CargarTextura("resources/botones.png");
                         title = true;
+                        break;
+                    case 1:
+                        EscenaInstrucciones();
+                        break;
+                    case 2:
+                       EscenaCreditos();
+                       break;
+                    case 3:
+                        CloseWindow();
+                        break;
                     }
-                    else if (i == 1) EscenaInstrucciones();
-                    else if (i == 2) EscenaCreditos();
-                    else if (i == 3) CloseWindow();
-                }
             }
 
-            Rectangle src = { 0, (float)(estado * buttonHeight), (float)buttonWidth, (float)buttonHeight };
-            DrawTextureRec(botonesTexture, src, { botones[i].x, botones[i].y }, WHITE);
+            botones[select].Draw();
         }
 
         EndDrawing();
     }
 
     // Descargar textura antes de salir
-    UnloadTexture(botonesTexture);  // WINDOWS
+    BotonesMenu::DescargarTextura();  // WINDOWS
     CloseWindow();  // WINDOWS
 
     // prueba
