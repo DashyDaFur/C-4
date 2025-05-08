@@ -19,7 +19,7 @@ int main()
     SetTargetFPS(60);
 
     // --- Carga textura de los botones ---
-    BotonesMenu::CargarTextura("resources/botones.png");
+    BotonesMenu::CargarTextura("resources/Botones.png");
 
     // --- Establece el indice, posicion en x y posicion en y de los botones ---
     BotonesMenu botones[4] = {
@@ -32,7 +32,7 @@ int main()
     while (!WindowShouldClose()){
 
         BeginDrawing();
-        ClearBackground(RAYWHITE);
+        ClearBackground(Color{24, 7, 85, 255});
 
         if (title) DrawText("Conecta 4", screenWidth / 2 - MeasureText("Conecta 4", 50) / 2, 50, 50, DARKBLUE);
 
@@ -47,7 +47,7 @@ int main()
                         title = false;
                         BotonesMenu::DescargarTextura();
                         EscenaJuego();
-                        BotonesMenu::CargarTextura("resources/botones.png");
+                        BotonesMenu::CargarTextura("resources/Botones.png");
                         title = true;
                         break;
                     case 1:
@@ -70,6 +70,6 @@ int main()
 
     BotonesMenu::DescargarTextura();
 
-    CloseWindow();  
+    CloseWindow();
     return 0;
 }
