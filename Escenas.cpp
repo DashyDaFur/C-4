@@ -5,13 +5,31 @@
 
 #include "Escenas.hpp"
 
+extern Texture2D FichaRoja;
+extern Texture2D FichaAmarilla;
+
 void EscenaJuego()
 {
+    SetExitKey(KEY_ESCAPE);
+    Texture2D FichaRoja = LoadTexture("resources/FichaROJA.png");
+    Texture2D FichaAmarilla = LoadTexture("resources/FichaYLLW.png");
+    Texture2D Controles = LoadTexture("resources/Controles.png");
     while (!WindowShouldClose()){
 
         BeginDrawing();
+        ClearBackground(Color{ 47, 124, 192, 255 });
 
-        ClearBackground(Color{24, 7, 85, 255});
+
+        DrawText("Jugador 1", 735, screenHeight - 150, 15, RAYWHITE);
+        DrawTextureEx(FichaRoja, (Vector2){ (float)850, (float)(screenHeight - 170) },0.0f, 0.1f, WHITE);
+
+        DrawText("Jugador 2", 735, screenHeight - 110, 15, RAYWHITE);
+        DrawTextureEx(FichaAmarilla,(Vector2){ (float)850, (float)(screenHeight - 130) },0.0f, 0.1f, WHITE);
+
+        //HEY!!!! los nombres a lo maximo son de 13 caracteres, para aplicarlo
+
+        DrawTextureEx(Controles,(Vector2){(float)50, (float)(screenHeight - 220 ) },0.0f, 0.4f, WHITE);
+        DrawText("Controles",115, screenHeight - 110, 15, RAYWHITE);
 
 
 
@@ -22,12 +40,15 @@ void EscenaJuego()
             break;
         }
     }
+    UnloadTexture(FichaRoja);
+    SetExitKey(KEY_NULL);
 }
 void EscenaInstrucciones()
 {
+    SetExitKey(KEY_ESCAPE);
     while (!WindowShouldClose()){
         BeginDrawing();
-        ClearBackground(Color{24, 7, 85, 255});
+        ClearBackground(Color{ 47, 124, 192, 255 });
 
         DrawText("INSTRUCCIONES:", 410, 30, 20, RAYWHITE);
         DrawText("El juego consiste en conectar 4 fichas de las que te corresponden", 145, 100, 20, RAYWHITE);
@@ -41,14 +62,15 @@ void EscenaInstrucciones()
             break;
         }
     }
-
+    SetExitKey(KEY_NULL);
 }
 
 void EscenaCreditos()
 {
+    SetExitKey(KEY_ESCAPE);
     while (!WindowShouldClose()){
         BeginDrawing();
-        ClearBackground(Color{24, 7, 85, 255});
+        ClearBackground(Color{ 47, 124, 192, 255 });
 
         DrawText("CREDITOS:", 440, 30, 20, RAYWHITE);
         DrawText(" Programa elaborado como proyecto final de Programación de", 175, 100, 20, RAYWHITE);
@@ -70,4 +92,5 @@ void EscenaCreditos()
             break;
         }
     }
+    SetExitKey(KEY_NULL);
 }
