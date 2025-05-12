@@ -48,6 +48,8 @@
 			<Add library="user32" />
 			<Add directory="C:/raylib/raylib/src" />
 		</Linker>
+		<Unit filename="BotonesMenu.cpp" />
+		<Unit filename="BotonesMenu.hpp" />
 		<Unit filename="Escenas.cpp" />
 		<Unit filename="Escenas.hpp" />
 		<Unit filename="lraylib/AudioDevice.hpp" />

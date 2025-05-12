@@ -2,9 +2,9 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="lraylib/RaylibException.hpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="470" topLine="0" />
+			<Cursor1 position="2619" topLine="77" />
 		</Cursor>
 	</File>
 	<File name="Escenas.hpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -12,24 +12,34 @@
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+	<File name="BotonesMenu.hpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="75" topLine="0" />
+			<Cursor1 position="184" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Escenas.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="lraylib\RaylibException.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="11" topLine="0" />
+			<Cursor1 position="470" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="lraylib/AutomationEventList.hpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="BotonesMenu.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="421" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lraylib\AudioStream.hpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="435" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lraylib\AutomationEventList.hpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="352" topLine="13" />
 		</Cursor>
 	</File>
-	<File name="lraylib/AudioStream.hpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Escenas.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="435" topLine="0" />
+			<Cursor1 position="11" topLine="12" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

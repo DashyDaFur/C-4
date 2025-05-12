@@ -16,7 +16,7 @@ BotonesMenu::BotonesMenu(int i, float x, float y)
 
 void BotonesMenu::Draw()
 {
-    Rectangle src = {0, (60.0f * estado), 300.0f, 60.0f};
+    Rectangle src = {0, (60.0f * estado), 300.0f, 97.0f};
     DrawTextureRec(textura, src, {hitbox.x, hitbox.y}, WHITE);
 }
 
