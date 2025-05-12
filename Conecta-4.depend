@@ -611,13 +611,13 @@
 	<stdarg.h>
 	<stdbool.h>
 
-1747064737 source:c:\users\corde\onedrive\escritorio\programacion\c-4\c-4\escenas.cpp
+1747086969 source:c:\users\corde\onedrive\escritorio\programacion\c-4\c-4\escenas.cpp
 	"raylib.h"
 	"Escenas.hpp"
 
 1746573763 c:\users\corde\onedrive\escritorio\programacion\c-4\c-4\escenas.hpp
 
-1747066177 source:c:\users\corde\onedrive\escritorio\programacion\c-4\c-4\main.cpp
+1747083122 source:c:\users\corde\onedrive\escritorio\programacion\c-4\c-4\main.cpp
 	"raylib.h"
 	"BotonesMenu.hpp"
 	"Escenas.hpp"
@@ -625,7 +625,13 @@
 1747062749 c:\users\corde\onedrive\escritorio\programacion\c-4\c-4\botonesmenu.hpp
 	"raylib.h"
 
-1747066022 source:c:\users\corde\onedrive\escritorio\programacion\c-4\c-4\botonesmenu.cpp
+1747082760 source:c:\users\corde\onedrive\escritorio\programacion\c-4\c-4\botonesmenu.cpp
 	"raylib.h"
 	"BotonesMenu.hpp"
+
+1747086527 source:c:\users\corde\onedrive\escritorio\programacion\c-4\c-4\juego.cpp
+	<iostream>
+	<iomanip>
+	<thread>
+	<chrono>
 

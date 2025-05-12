@@ -10,7 +10,7 @@ Texture2D Controles;
 
 // Configuración de la ventana
 const int screenWidth = 1000;      // Ancho de la ventana
-const int screenHeight = 650;      // Alto de la ventana
+const int screenHeight = 800;      // Alto de la ventana
 
 int main()
 {
@@ -33,10 +33,10 @@ int main()
     // Configuración de botones del menú
     const int numBotones = 4;
     BotonesMenu botones[4] = {
-        BotonesMenu(0, (screenWidth - 300) / 2, 230),  // Botón 1 (Jugar)
-        BotonesMenu(1, (screenWidth - 300) / 2, 310),  // Botón 2 (Instrucciones)
-        BotonesMenu(2, (screenWidth - 300) / 2, 390),  // Botón 3 (Créditos)
-        BotonesMenu(3, (screenWidth - 300) / 2, 470)  // Botón 4 (Salir)
+        BotonesMenu(0, (screenWidth - 249) / 2, 230),  // Botón 1 (Jugar)
+        BotonesMenu(1, (screenWidth - 249) / 2, 350),  // Botón 2 (Instrucciones)
+        BotonesMenu(2, (screenWidth - 249) / 2, 470),  // Botón 3 (Créditos)
+        BotonesMenu(3, (screenWidth - 249) / 2, 590)  // Botón 4 (Salir)
     };
 
     int currentKeyboardSelection = 0;  // Índice del botón seleccionado con teclado
@@ -91,7 +91,7 @@ int main()
             DrawTexture(
                 tituloTexture,
                 screenWidth / 2 - tituloTexture.width / 2, // Centrado
-                -10,
+                10,
                 WHITE
             );
         }

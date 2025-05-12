@@ -41,6 +41,8 @@ void EscenaJuego()
         // Indicación para volver al menú
         DrawText("Presiona la tecla ESC para volver al menu", 340, 600, 15, RAYWHITE);
 
+        // función para juego
+
         // Fin del dibujado
         EndDrawing();
 

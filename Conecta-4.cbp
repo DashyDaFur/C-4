@@ -52,6 +52,8 @@
 		<Unit filename="BotonesMenu.hpp" />
 		<Unit filename="Escenas.cpp" />
 		<Unit filename="Escenas.hpp" />
+		<Unit filename="juego.cpp" />
+		<Unit filename="juego.hpp" />
 		<Unit filename="lraylib/AudioDevice.hpp" />
 		<Unit filename="lraylib/AudioStream.hpp" />
 		<Unit filename="lraylib/AutomationEventList.hpp" />

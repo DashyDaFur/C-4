@@ -1,0 +1,6 @@
+#ifndef JUEGO_HPP_INCLUDED
+#define JUEGO_HPP_INCLUDED
+
+
+
+#endif // JUEGO_HPP_INCLUDED
