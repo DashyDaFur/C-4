@@ -1,12 +1,12 @@
-//linux
-//#include "./lraylib/raylib-cpp.hpp"
-//windows
 #include "raylib.h"
 
 #include "Escenas.hpp"
 
 extern Texture2D FichaRoja;
 extern Texture2D FichaAmarilla;
+
+const int screenWidth = 1000;
+const int screenHeight = 650;
 
 void EscenaJuego()
 {

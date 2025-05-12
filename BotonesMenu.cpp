@@ -3,26 +3,15 @@
 
 Texture2D BotonesMenu::textura;
 
-BotonesMenu::BotonesMenu() {}
+BotonesMenu::BotonesMenu() {
+    estado = NORMAL;
+}
 
 BotonesMenu::BotonesMenu(int i, float x, float y)
 {
     indice = i;
     hitbox = {x, y, 300.0f, 60.0f};
-}
-
-bool BotonesMenu::Update(Vector2 mouse)
-{
     estado = NORMAL;
-    if (CheckCollisionPointRec(mouse, hitbox)){
-        if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) estado = PRESSED;
-        else estado = HOVER;
-
-        if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
-            return true;
-        }
-    }
-    return false;
 }
 
 void BotonesMenu::Draw()

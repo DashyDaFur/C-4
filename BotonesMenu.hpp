@@ -3,10 +3,10 @@
 enum ButtonState {NORMAL,PRESSED,HOVER};
 
 class BotonesMenu {
-        Rectangle hitbox;
         ButtonState estado = NORMAL;
         int indice;
 public:
+        Rectangle hitbox;
         static Texture2D textura;
     
         BotonesMenu();
