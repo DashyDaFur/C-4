@@ -18,7 +18,7 @@ int main()
     InitWindow(screenWidth, screenHeight, "Conecta 4");
     Fondo = LoadTexture("resources/Fondo.jpg");
     FichaRoja= LoadTexture("resources/FichaROJA.png");
-    FichaAmarilla= LoadTexture("resources/FichasYLLW.png");
+    FichaAmarilla= LoadTexture("resources/FichaYLLW.png");
     Controles= LoadTexture("resources/Controles.png");
     SetTargetFPS(60);
 

@@ -1,165 +1,59 @@
-#include <iostream>
-#include <iomanip>
-#include <thread>
-#include <chrono>
 #include "juego.hpp"
 
+// Constantes internas para la lógica del juego
+const int BOARD_ROWS_CONNECT4 = 6;
+const int BOARD_COLS_CONNECT4 = 7;
 
-using namespace std;
-
-/* ************************************************************************************/
-
-void MostrarTablero(int* &tablero)
+// Funciones para acceder a las dimensiones desde otros archivos si es necesario
+// (aunque en este caso, Escenas.cpp las define también para su dibujado)
+int GetBoardRows()
 {
-    cout << "\t";
-    for(int i=41;i>-1;i--)
-    {
-        cout << setw(2) << tablero[i];  // Muestra cada celda del tablero con formato
-        if (i%7==0)
-        {
-            cout << "\n" << "\t";  // Salto de línea al final de cada fila
-        }
-    }
-    cout << "\n";
+    return BOARD_ROWS_CONNECT4;
+}
+int GetBoardCols()
+{
+    return BOARD_COLS_CONNECT4;
 }
 
-/* ************************************************************************************/
 
+/**
+ * @brief Cuenta las fichas consecutivas de un jugador en una dirección específica desde un punto de inicio.
+ * @param r_start Fila inicial.
+ * @param c_start Columna inicial.
+ * @param dr Delta para la fila (dirección de búsqueda en filas).
+ * @param dc Delta para la columna (dirección de búsqueda en columnas).
+ * @param player Jugador cuyas fichas se cuentan.
+ * @param board Puntero al array del tablero.
+ * @return Número de fichas consecutivas encontradas en esa dirección.
+ */
+int CountLine(int r_start, int c_start, int dr, int dc, int player, const int* board) {
+    int count = 0;
+    int r = r_start + dr;
+    int c = c_start + dc;
 
-int contar(int columna, int op, int jugador, int* juego)
-{
-    int conteo = 0;
-    int posicion = columna + op;
-
-    while (posicion >= 0 && posicion < 42 && juego[posicion] == jugador)
-    {
-        // Validar que no se cruce el borde del tablero
-        int colActual = columna % 7;
-        int colNueva = posicion % 7;
-
-        conteo++;
-        posicion += op;  // Avanza en la dirección especificada (op)
+    while (r >= 0 && r < BOARD_ROWS_CONNECT4 && c >= 0 && c < BOARD_COLS_CONNECT4 &&
+           board[r * BOARD_COLS_CONNECT4 + c] == player) {
+        count++;
+        r += dr;
+        c += dc;
     }
-    return conteo;
+    return count;
 }
 
-/* ************************************************************************************/
-
-bool Cuatro(int columna, int jugador, int* juego)
+bool CheckWin(int r_dropped, int c_dropped, int player, const int* board)
 {
-    // Cuenta fichas consecutivas en todas direcciones
-    int h  = 1 + contar(columna,  1, jugador, juego) + contar(columna, -1, jugador, juego);  // Horizontal
-    int v  = 1 + contar(columna,  7, jugador, juego) + contar(columna, -7, jugador, juego);  // Vertical
-    int d1 = 1 + contar(columna,  8, jugador, juego) + contar(columna, -8, jugador, juego);  // Diagonal inf izquierda a sup derecha
-    int d2 = 1 + contar(columna,  6, jugador, juego) + contar(columna, -6, jugador, juego);  // Diagonal inf derecha a sup izquierda
+    // Direcciones: {delta_fila, delta_columna}
+    // Horizontal, Vertical, Diagonal (abajo-derecha), Diagonal (arriba-derecha)
+    int dr[] = {0, 1, 1,  -1};
+    int dc[] = {1, 0, 1,   1};
 
-    return (h >= 4 || v >= 4 || d1 >= 4 || d2 >= 4);  // Verifica si hay 4 en línea
-}
-
-/* ************************************************************************************/
-
-void Caida(int jugador,int columna,int* &tablero,int altura)
-{
-    int alturaR = 5-altura;  // Calcula la altura relativa
-    int* tableroCopia = new int[42];  // Crea copia del tablero para animación
-
-    // Inicializa la copia del tablero
-    for (int i=0 ; i<42 ; i++)
-    {
-        if (i!=columna)
-        {
-            tableroCopia[i] = tablero[i];
-        }
-        else
-        {
-            tableroCopia[i] = 0;  // Limpia la columna para la animación
+    for (int i = 0; i < 4; ++i) {
+        int count = 1; // Contar la ficha recién colocada
+        count += CountLine(r_dropped, c_dropped,  dr[i],  dc[i], player, board); // Contar en una dirección
+        count += CountLine(r_dropped, c_dropped, -dr[i], -dc[i], player, board); // Contar en la dirección opuesta
+        if (count >= 4) {
+            return true;
         }
     }
-
-    // Animación de caída de la ficha
-
-    int alturaTemp = alturaR;
-
-    for (int i=0 ; i<alturaR ; i++)
-    {
-        system("CLS");
-
-        tableroCopia[columna+(7*alturaTemp)] = jugador;  // Coloca ficha en posición temporal
-        MostrarTablero(tableroCopia);
-        tableroCopia[columna+(7*alturaTemp)] = 0;  // Limpia posición temporal
-        alturaTemp--;
-        this_thread::sleep_for(std::chrono::milliseconds(500));  // Pausa para animación
-        system("CLS");
-    }
-}
-/* ************************************************************************************/
-
-
-void Juego()
-{
-    int opcion=0;
-    // Bucle principal del juego (permite jugar múltiples veces)
-    do{
-        int columna = 0;
-        int altura;
-        short int jugador = 1;
-        int* tablero = new int[42];  // Crea el tablero
-
-        // Inicializa el tablero con ceros
-        for (int i=0;i<42;i++)
-        {
-            tablero[i] = 0;
-        }
-
-        //MostrarTablero(tablero);
-
-        cout << "RENGLON  ";
-        for(int i=0 ; i<7 ; i++)
-        {
-            cout << i+1 << " ";  // Muestra números de columnas
-        }
-
-        // Bucle de un juego completo
-        do{
-            jugador = (jugador%2)?1:2;  // Alterna entre jugador 1 y 2
-            altura = 0;
-            cout << "\n" << setw(10) << "JUGADOR " << jugador;
-
-            cout << "\nEn que columna va a entrar la ficha?";
-            cin >> columna;
-            columna = 7-columna;  // Convierte entrada a índice interno
-
-            int altura = 0;
-
-            // Encuentra la posición vacía más baja en la columna
-            while (tablero[columna]!= 0)
-            {
-                columna += 7;
-                altura++;
-            }
-
-            cout << "\n ALTURA" << altura << "\n";
-            tablero[columna] = jugador;     // Coloca la ficha del jugador
-
-            //Caida(jugador, columna, juego, altura);  // Muestra animación de caída
-            //MostrarTablero(juego);
-
-            // Verifica si hay ganador
-            if(Cuatro(columna, jugador, tablero))
-            {
-                this_thread::sleep_for(std::chrono::milliseconds(2000));
-                system("CLS");
-                cout << "EL JUGADOR "<<jugador<<" GANO!"<<"\n";
-                break;
-            }
-            jugador++;
-
-        } while(true);
-
-        cout << "\n\250Quiere Jugar otra vez?";
-
-        cout << "\n1)PARA S\241"<<"\n2)PARA NO";
-        cin >> opcion;;
-
-    } while(opcion!=0);
+    return false;
 }
