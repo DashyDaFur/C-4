@@ -1,6 +1,3 @@
-//linux
-//#include "./lraylib/raylib-cpp.hpp"
-//windows
 #include "raylib.h"
 
 #include "BotonesMenu.hpp"
@@ -79,6 +76,7 @@ int main()
             case 3:
                 CloseWindow();
                 break;
+                return 0;
             }
         }
 
@@ -101,22 +99,21 @@ int main()
             botones[i].Draw(); 
 
             if (i == currentKeyboardSelection){
-                DrawRectangleLinesEx(botones[i].hitbox, 2.0f, RED); // Dibuja el contorno en el botton actual seleccionado
+              DrawRectangleLinesEx(botones[i].hitbox, 2.0f, RED);
 
-                // Aqui se pondra la flecha que estara en la seleccion de botones
-
+                if (IsKeyPressed(KEY_ENTER)) botones->estado = PRESSED;
+                else botones->estado = HOVER;
+        
             }
         }
-
+        
         EndDrawing();
+
     }
 
-    // Descargar texturas al salir
-    BotonesMenu::DescargarTextura();
-    UnloadTexture(tituloTexture);
-    UnloadTexture(FichaRoja);
-    UnloadTexture(FichaAmarilla);
-    UnloadTexture(Controles);
-    CloseWindow();
     return 0;
 }
+
+
+
+
