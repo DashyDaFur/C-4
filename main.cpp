@@ -1,53 +1,52 @@
-// Inclusión de bibliotecas
-#include "raylib.h"                 /
+//linux
+//#include "./lraylib/raylib-cpp.hpp"
+//windows
+#include "raylib.h"
+
 #include "BotonesMenu.hpp"
 #include "Escenas.hpp"
 
-// Declaración de texturas globales
 Texture2D FichaRoja;
 Texture2D FichaAmarilla;
 Texture2D Controles;
 
-// Configuración de la ventana
-const int screenWidth = 1000;      // Ancho de la ventana
-const int screenHeight = 800;      // Alto de la ventana
+const int screenWidth = 1000;
+const int screenHeight = 650;
 
 int main()
 {
-    bool title = true;             // Control para mostrar el título
-    Texture2D miImagen;            // Variable para texturas (no se usa luego)
-
-    // Inicialización de la ventana
+    bool title = true;
+    Texture2D miImagen;
     InitWindow(screenWidth, screenHeight, "Conecta 4");
+    FichaRoja= LoadTexture("resources/FichaROJA.png");
+    FichaAmarilla= LoadTexture("resources/FichasYLLW.png");
+    Controles= LoadTexture("resources/Controles.png");
+    SetTargetFPS(60);
 
-    // Carga de texturas
-    FichaRoja = LoadTexture("resources/FichaROJA.png");
-    FichaAmarilla = LoadTexture("resources/FichasYLLW.png");
-    Controles = LoadTexture("resources/Controles.png");
-    SetTargetFPS(60);              // Establece el límite de FPS
-
-    // Carga de texturas del menú
+    // --- Carga texturas ---
     BotonesMenu::CargarTextura("resources/Botones.png");
-    Texture2D tituloTexture = LoadTexture("resources/logo.png"); // Textura del título
+    Texture2D tituloTexture = LoadTexture("resources/logo.png"); // Nueva textura para el título
+    ClearBackground(Color{ 47, 124, 192, 255 });
 
-    // Configuración de botones del menú
+    // --- Establece el indice, posicion en x y posicion en y de los botones ---
     const int numBotones = 4;
     BotonesMenu botones[4] = {
-        BotonesMenu(0, (screenWidth - 249) / 2, 230),  // Botón 1 (Jugar)
-        BotonesMenu(1, (screenWidth - 249) / 2, 350),  // Botón 2 (Instrucciones)
-        BotonesMenu(2, (screenWidth - 249) / 2, 470),  // Botón 3 (Créditos)
-        BotonesMenu(3, (screenWidth - 249) / 2, 590)  // Botón 4 (Salir)
+        BotonesMenu(0, (screenWidth - 300) / 2, 230),
+        BotonesMenu(1, (screenWidth - 300) / 2, 310),
+        BotonesMenu(2, (screenWidth - 300) / 2, 390),
+        BotonesMenu(3, (screenWidth - 300) / 2, 470)
     };
 
-    int currentKeyboardSelection = 0;  // Índice del botón seleccionado con teclado
-    SetExitKey(KEY_NULL);             // Deshabilita la tecla de salida por defecto
+    int currentKeyboardSelection = 0; 
 
-    // Bucle principal del juego
+    SetExitKey(KEY_NULL);
+
     while (!WindowShouldClose()){
-        // Navegación con teclado (flechas arriba/abajo)
+
         if(IsKeyPressed(KEY_DOWN)){
             currentKeyboardSelection = (currentKeyboardSelection + 1) % numBotones;
         }
+
         if(IsKeyPressed(KEY_UP)){
             currentKeyboardSelection--;
             if(currentKeyboardSelection < 0){
@@ -55,58 +54,64 @@ int main()
             }
         }
 
-        // Detección de acción (Enter)
         int actionTriggeredBy = -1; // -1: sin acción
+
         if(IsKeyPressed(KEY_ENTER)){
-            actionTriggeredBy = currentKeyboardSelection;
+            actionTriggeredBy = currentKeyboardSelection; // La accion es la del boton actualmente seleccionado por teclado
         }
 
-        // Manejo de acciones del menú
+        // --- Ejecutar Accion ---
         if(actionTriggeredBy != -1){
             switch(actionTriggeredBy){
-                case 0:  // Jugar
-                    BotonesMenu::DescargarTextura();
-                    EscenaJuego();                     // Entra en la escena de juego
-                    BotonesMenu::CargarTextura("resources/Botones.png");
-                    break;
-                case 1:  // Instrucciones
-                    EscenaInstrucciones();            // Muestra instrucciones
-                    break;
-                case 2:  // Créditos
-                   EscenaCreditos();                  // Muestra créditos
-                   break;
-                case 3:  // Salir
-                    CloseWindow();                     // Cierra el juego
-                    break;
+             case 0:
+                title = false; 
+                BotonesMenu::DescargarTextura(); 
+                EscenaJuego();
+                BotonesMenu::CargarTextura("resources/Botones.png"); 
+                title = true; 
+                break;
+            case 1:
+                EscenaInstrucciones();
+                break;
+            case 2:
+               EscenaCreditos();
+               break;
+            case 3:
+                CloseWindow();
+                break;
             }
         }
 
-        // Renderizado
+        // --- Dibujado ---
         BeginDrawing();
-        //ClearBackground(Color{ 0, 0, 0, 255 });
-        ClearBackground(Color{ 20, 20, 120, 255 });
-
-        // Dibuja el título
+        ClearBackground(Color{ 47, 124, 192, 255 });
+        
         if(title){
+            // Dibuja la imagen del título en lugar del texto
             DrawTexture(
                 tituloTexture,
-                screenWidth / 2 - tituloTexture.width / 2, // Centrado
-                10,
+                screenWidth / 2 - tituloTexture.width / 2, // Centrado horizontal
+                50, // Posición vertical
                 WHITE
             );
         }
 
-        // Dibuja los botones y resalta el seleccionado
         for(int i = 0; i < numBotones; i++){
-            botones[i].Draw();
+
+            botones[i].Draw(); 
+
             if (i == currentKeyboardSelection){
-                DrawRectangleLinesEx(botones[i].hitbox, 2.0f, RED); // Resaltado
+                DrawRectangleLinesEx(botones[i].hitbox, 2.0f, RED); // Dibuja el contorno en el botton actual seleccionado
+
+                // Aqui se pondra la flecha que estara en la seleccion de botones
+
             }
         }
+
         EndDrawing();
     }
 
-    // Limpieza al salir
+    // Descargar texturas al salir
     BotonesMenu::DescargarTextura();
     UnloadTexture(tituloTexture);
     UnloadTexture(FichaRoja);

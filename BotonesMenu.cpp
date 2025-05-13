@@ -10,13 +10,13 @@ BotonesMenu::BotonesMenu() {
 BotonesMenu::BotonesMenu(int i, float x, float y)
 {
     indice = i;
-    hitbox = {x, y, 229.0f, 74.0f};
+    hitbox = {x, y, 300.0f, 60.0f};
     estado = NORMAL;
 }
 
 void BotonesMenu::Draw()
 {
-    Rectangle src = {0, (60.0f * estado), 229.0f, 74.0f};
+    Rectangle src = {0, (60.0f * estado), 300.0f, 60.0f};
     DrawTextureRec(textura, src, {hitbox.x, hitbox.y}, WHITE);
 }
 
