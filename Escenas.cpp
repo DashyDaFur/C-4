@@ -69,7 +69,7 @@ bool EscenaNombre(char* p1NameDest, char* p2NameDest)
         }
 
         if (IsKeyPressed(KEY_ESCAPE)) return false;
-        
+
         BeginDrawing();
             ClearBackground(Color{ 47, 124, 192, 255 });
 
@@ -79,13 +79,13 @@ bool EscenaNombre(char* p1NameDest, char* p2NameDest)
             DrawText("Jugador 1:", p1TextBox.x, p1TextBox.y - 25, 20, RAYWHITE);
             DrawRectangleRec(p1TextBox, LIGHTGRAY);
             if (activePlayerInput == 1) DrawRectangleLinesEx(p1TextBox, 2, YELLOW);
-            else DrawRectangleLinesEx(p1TextBox, 1, DARKGRAY); 
+            else DrawRectangleLinesEx(p1TextBox, 1, DARKGRAY);
 
             DrawText(p1NameDest, (int)p1TextBox.x + 10, (int)p1TextBox.y + 10, 20, BLACK);
 
             if (activePlayerInput == 1 && (p1LetterCount < MAX_NAME_LENGTH))
             {
-                if (((int)(GetTime()*2.5f))%2 == 0) 
+                if (((int)(GetTime()*2.5f))%2 == 0)
                 {
                     DrawText("_", (int)p1TextBox.x + 10 + MeasureText(p1NameDest, 20), (int)p1TextBox.y + 12, 20, BLACK);
                 }
@@ -96,7 +96,7 @@ bool EscenaNombre(char* p1NameDest, char* p2NameDest)
             DrawRectangleRec(p2TextBox, LIGHTGRAY);
             if (activePlayerInput == 2) DrawRectangleLinesEx(p2TextBox, 2, YELLOW);
             else DrawRectangleLinesEx(p2TextBox, 1, DARKGRAY);
-            
+
             DrawText(p2NameDest, (int)p2TextBox.x + 10, (int)p2TextBox.y + 10, 20, BLACK);
 
             if (activePlayerInput == 2 && (p2LetterCount < MAX_NAME_LENGTH))
@@ -112,14 +112,14 @@ bool EscenaNombre(char* p1NameDest, char* p2NameDest)
             helpTextY += 25;
             DrawText("Presiona TAB para cambiar de jugador.", screenWidth / 2 - MeasureText("Presiona TAB para cambiar de jugador.", 18) / 2, helpTextY, 18, RAYWHITE);
             helpTextY += 25;
-            DrawText("Presiona ESC para volver al menÃº principal.", screenWidth / 2 - MeasureText("Presiona ESC para volver al menÃº principal.", 18) / 2, helpTextY, 18, RAYWHITE);
+            DrawText("Presiona ESC para volver al menú principal.", screenWidth / 2 - MeasureText("Presiona ESC para volver al menú principal.", 18) / 2, helpTextY, 18, RAYWHITE);
 
         EndDrawing();
 
         if (!firstFrameDone) firstFrameDone = true;
     }
 
-    return true; 
+    return true;
 }
 
 void EscenaJuego()
@@ -192,12 +192,12 @@ void EscenaCreditos()
         ClearBackground(Color{ 47, 124, 192, 255 });
 
         DrawText("CREDITOS:", 440, 30, 20, RAYWHITE);
-        DrawText(" Programa elaborado como proyecto final de ProgramaciÃ³n de", 175, 100, 20, RAYWHITE);
-        DrawText("Computadoras de la Licenciatura en Ciencias de la ComputaciÃ³n", 175, 130, 20, RAYWHITE);
+        DrawText(" Programa elaborado como proyecto final de Programación de", 175, 100, 20, RAYWHITE);
+        DrawText("Computadoras de la Licenciatura en Ciencias de la Computación", 175, 130, 20, RAYWHITE);
         DrawText("de la Universidad de Sonora.", 345, 160, 20, RAYWHITE);
         DrawText("Presentado el 17 de mayo de 2025.", 315, 250, 20, RAYWHITE);
         DrawText("Desarrolladores:", 400, 300, 20, RAYWHITE);
-        DrawText("-DANIEL LEINAD DOMÃNGUEZ CALVARIO", 280, 350, 20, RAYWHITE);
+        DrawText("-DANIEL LEINAD DOMÍNGUEZ CALVARIO", 280, 350, 20, RAYWHITE);
         DrawText("-ALEJANDRO CORDERO FRAGA", 335, 380, 20, RAYWHITE);
         DrawText("-JOSE RODRIGO ESPINOZA GARCIA", 310, 410, 20, RAYWHITE);
         DrawText("-ALBERTO GALVEZ MENDOZA", 335, 440, 20, RAYWHITE);

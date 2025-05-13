@@ -24,7 +24,7 @@ int main()
 
     // --- Carga texturas ---
     BotonesMenu::CargarTextura("resources/Botones.png");
-    Texture2D tituloTexture = LoadTexture("resources/logo.png"); // Nueva textura para el tÃ­tulo
+    Texture2D tituloTexture = LoadTexture("resources/logo.png"); // Nueva textura para el título
     DrawTextureEx(Fondo, (Vector2){0, 0}, 0.0f, 1, WHITE);
 
     // --- Establece el indice, posicion en x y posicion en y de los botones ---
@@ -53,32 +53,34 @@ int main()
             }
         }
 
-        int actionTriggeredBy = -1; // -1: sin acciÃ³n
+        int actionTriggeredBy = -1; // -1: sin acción
 
         if(IsKeyPressed(KEY_ENTER)){
             actionTriggeredBy = currentKeyboardSelection; // La accion es la del boton actualmente seleccionado por teclado
         }
 
         // --- Ejecutar Accion ---
-        if(actionTriggeredBy != -1){
-            switch(actionTriggeredBy){
-             case 0:
-                title = false;
-                BotonesMenu::DescargarTextura();
-                EscenaJuego();
-                BotonesMenu::CargarTextura("resources/Botones.png");
-                title = true;
-                break;
-            case 1:
-                EscenaInstrucciones();
-                break;
-            case 2:
-               EscenaCreditos();
-               break;
-            case 3:
-                CloseWindow();
-                break;
-                return 0;
+        if(actionTriggeredBy != -1)
+        {
+            switch(actionTriggeredBy)
+            {
+                case 0:
+                    title = false;
+                    BotonesMenu::DescargarTextura();
+                    EscenaJuego();
+                    BotonesMenu::CargarTextura("resources/Botones.png");
+                    title = true;
+                    break;
+                case 1:
+                    EscenaInstrucciones();
+                    break;
+                case 2:
+                   EscenaCreditos();
+                   break;
+                case 3:
+                    CloseWindow();
+                    break;
+                    return 0;
             }
         }
 
@@ -86,17 +88,19 @@ int main()
         BeginDrawing();
         DrawTextureEx(Fondo, (Vector2){0, 0}, 0.0f, 1, WHITE);
 
-        if(title){
-            // Dibuja la imagen del tÃ­tulo en lugar del texto
+        if (title)
+        {
+            // Dibuja la imagen del título en lugar del texto
             DrawTexture(
                 tituloTexture,
                 screenWidth / 2 - tituloTexture.width / 2, // Centrado horizontal
-                50, // PosiciÃ³n vertical
+                50, // Posición vertical
                 WHITE
             );
         }
 
-        for(int i = 0; i < numBotones; i++){
+        for(int i = 0; i < numBotones; i++)
+        {
 
             botones[i].Draw();
 

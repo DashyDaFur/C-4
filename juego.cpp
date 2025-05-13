@@ -2,11 +2,13 @@
 #include <iomanip>
 #include <thread>
 #include <chrono>
+#include "juego.hpp"
+
 
 using namespace std;
 
 /* ************************************************************************************/
-/*
+
 void MostrarTablero(int* &tablero)
 {
     cout << "\t";
@@ -55,11 +57,11 @@ bool Cuatro(int columna, int jugador, int* juego)
 }
 
 /* ************************************************************************************/
-/*
+
 void Caida(int jugador,int columna,int* &tablero,int altura)
 {
     int alturaR = 5-altura;  // Calcula la altura relativa
-    int* juegoCopia = new int[42];  // Crea copia del tablero para animación
+    int* tableroCopia = new int[42];  // Crea copia del tablero para animación
 
     // Inicializa la copia del tablero
     for (int i=0 ; i<42 ; i++)
@@ -83,7 +85,7 @@ void Caida(int jugador,int columna,int* &tablero,int altura)
         system("CLS");
 
         tableroCopia[columna+(7*alturaTemp)] = jugador;  // Coloca ficha en posición temporal
-        MostrarTablero(juegoCopia);
+        MostrarTablero(tableroCopia);
         tableroCopia[columna+(7*alturaTemp)] = 0;  // Limpia posición temporal
         alturaTemp--;
         this_thread::sleep_for(std::chrono::milliseconds(500));  // Pausa para animación
@@ -93,7 +95,7 @@ void Caida(int jugador,int columna,int* &tablero,int altura)
 /* ************************************************************************************/
 
 
-int juego ()
+void Juego()
 {
     int opcion=0;
     // Bucle principal del juego (permite jugar múltiples veces)
@@ -160,6 +162,4 @@ int juego ()
         cin >> opcion;;
 
     } while(opcion!=0);
-
-    return 0;
 }
