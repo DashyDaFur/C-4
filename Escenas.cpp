@@ -2,6 +2,7 @@
 
 #include "Escenas.hpp"
 
+extern Texture2D Fondo;
 extern Texture2D FichaRoja;
 extern Texture2D FichaAmarilla;
 
@@ -11,13 +12,14 @@ const int screenHeight = 650;
 void EscenaJuego()
 {
     SetExitKey(KEY_ESCAPE);
+    Texture2D Fondo = LoadTexture("resources/Fondo.jpg");
     Texture2D FichaRoja = LoadTexture("resources/FichaROJA.png");
     Texture2D FichaAmarilla = LoadTexture("resources/FichaYLLW.png");
     Texture2D Controles = LoadTexture("resources/Controles.png");
     while (!WindowShouldClose()){
 
         BeginDrawing();
-        ClearBackground(Color{ 47, 124, 192, 255 });
+        DrawTextureEx(Fondo, (Vector2){0, 0}, 0.0f, 1, WHITE);
 
 
         DrawText("Jugador 1", 735, screenHeight - 150, 15, RAYWHITE);
@@ -47,7 +49,7 @@ void EscenaInstrucciones()
     SetExitKey(KEY_ESCAPE);
     while (!WindowShouldClose()){
         BeginDrawing();
-        ClearBackground(Color{ 47, 124, 192, 255 });
+        DrawTextureEx(Fondo, (Vector2){0, 0}, 0.0f, 1, WHITE);
 
         DrawText("INSTRUCCIONES:", 410, 30, 20, RAYWHITE);
         DrawText("El juego consiste en conectar 4 fichas de las que te corresponden", 145, 100, 20, RAYWHITE);
@@ -69,7 +71,7 @@ void EscenaCreditos()
     SetExitKey(KEY_ESCAPE);
     while (!WindowShouldClose()){
         BeginDrawing();
-        ClearBackground(Color{ 47, 124, 192, 255 });
+        DrawTextureEx(Fondo, (Vector2){0, 0}, 0.0f, 1, WHITE);
 
         DrawText("CREDITOS:", 440, 30, 20, RAYWHITE);
         DrawText(" Programa elaborado como proyecto final de Programación de", 175, 100, 20, RAYWHITE);

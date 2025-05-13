@@ -3,6 +3,7 @@
 #include "BotonesMenu.hpp"
 #include "Escenas.hpp"
 
+Texture2D Fondo;
 Texture2D FichaRoja;
 Texture2D FichaAmarilla;
 Texture2D Controles;
@@ -15,6 +16,7 @@ int main()
     bool title = true;
     Texture2D miImagen;
     InitWindow(screenWidth, screenHeight, "Conecta 4");
+    Fondo = LoadTexture("resources/Fondo.jpg");
     FichaRoja= LoadTexture("resources/FichaROJA.png");
     FichaAmarilla= LoadTexture("resources/FichasYLLW.png");
     Controles= LoadTexture("resources/Controles.png");
@@ -23,7 +25,7 @@ int main()
     // --- Carga texturas ---
     BotonesMenu::CargarTextura("resources/Botones.png");
     Texture2D tituloTexture = LoadTexture("resources/logo.png"); // Nueva textura para el título
-    ClearBackground(Color{ 47, 124, 192, 255 });
+    DrawTextureEx(Fondo, (Vector2){0, 0}, 0.0f, 1, WHITE);
 
     // --- Establece el indice, posicion en x y posicion en y de los botones ---
     const int numBotones = 4;
@@ -34,7 +36,7 @@ int main()
         BotonesMenu(3, (screenWidth - 300) / 2, 470)
     };
 
-    int currentKeyboardSelection = 0; 
+    int currentKeyboardSelection = 0;
 
     SetExitKey(KEY_NULL);
 
@@ -61,11 +63,11 @@ int main()
         if(actionTriggeredBy != -1){
             switch(actionTriggeredBy){
              case 0:
-                title = false; 
-                BotonesMenu::DescargarTextura(); 
+                title = false;
+                BotonesMenu::DescargarTextura();
                 EscenaJuego();
-                BotonesMenu::CargarTextura("resources/Botones.png"); 
-                title = true; 
+                BotonesMenu::CargarTextura("resources/Botones.png");
+                title = true;
                 break;
             case 1:
                 EscenaInstrucciones();
@@ -82,8 +84,8 @@ int main()
 
         // --- Dibujado ---
         BeginDrawing();
-        ClearBackground(Color{ 47, 124, 192, 255 });
-        
+        DrawTextureEx(Fondo, (Vector2){0, 0}, 0.0f, 1, WHITE);
+
         if(title){
             // Dibuja la imagen del título en lugar del texto
             DrawTexture(
@@ -96,17 +98,12 @@ int main()
 
         for(int i = 0; i < numBotones; i++){
 
-            botones[i].Draw(); 
+            botones[i].Draw();
 
-            if (i == currentKeyboardSelection){
-              DrawRectangleLinesEx(botones[i].hitbox, 2.0f, RED);
-
-                if (IsKeyPressed(KEY_ENTER)) botones->estado = PRESSED;
-                else botones->estado = HOVER;
-        
-            }
+            if (i == currentKeyboardSelection) botones[i].estado = HOVER;
+            else botones[i].estado = NORMAL;
         }
-        
+
         EndDrawing();
 
     }
