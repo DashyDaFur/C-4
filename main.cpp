@@ -1,16 +1,19 @@
 #include "raylib.h"
 #include "BotonesMenu.hpp"
 #include "Escenas.hpp"
+#include "Sonidos.hpp"
 #include <string> // Necesario para std::string
 
 // ... (otras variables globales como Fondo, FichaRoja, etc.) ...
 Texture2D Fondo;
 Texture2D FichaRoja;
 Texture2D FichaAmarilla;
-Texture2D Controles; // Asegúrate que esta esté declarada
+Texture2D Controles; // Asegï¿½rate que esta estï¿½ declarada
 
 const int screenWidth = 1000;
 const int screenHeight = 650;
+
+Sonidos sonidosCaida;
 
 int main()
 {
@@ -18,10 +21,13 @@ int main()
     // Texture2D miImagen; // 'miImagen' no se usa
     InitWindow(screenWidth, screenHeight, "Conecta 4");
     Fondo = LoadTexture("resources/Fondo.jpg");
-    FichaRoja = LoadTexture("resources/FichaROJA.png");     // Asegúrate que estas rutas sean correctas
+    FichaRoja = LoadTexture("resources/FichaROJA.png");     // Asegï¿½rate que estas rutas sean correctas
     FichaAmarilla = LoadTexture("resources/FichaYLLW.png"); // y que las texturas existan
-    Controles = LoadTexture("resources/Controles.png");      // y que esta textura también exista
+    Controles = LoadTexture("resources/Controles.png");      // y que esta textura tambiï¿½n exista
     SetTargetFPS(60);
+
+    InitAudioDevice();
+    sonidosCaida.Cargar("resources/sfx");
 
     // --- Carga texturas ---
     BotonesMenu::CargarTextura("resources/Botones.png"); // Textura para el fondo de los botones
@@ -31,18 +37,18 @@ int main()
     // --- Establece el texto, posicion en x y posicion en y de los botones ---
     const int numBotones = 4;
     BotonesMenu botones[numBotones] = {
-        BotonesMenu("Jugar", (screenWidth - 300) / 2, 230),             // Texto para el botón 0
-        BotonesMenu("Instrucciones", (screenWidth - 300) / 2, 310),     // Texto para el botón 1
-        BotonesMenu("Créditos", (screenWidth - 300) / 2, 390),          // Texto para el botón 2
-        BotonesMenu("Salir", (screenWidth - 300) / 2, 470)              // Texto para el botón 3
+        BotonesMenu("Jugar", (screenWidth - 300) / 2, 230),             // Texto para el botï¿½n 0
+        BotonesMenu("Instrucciones", (screenWidth - 300) / 2, 310),     // Texto para el botï¿½n 1
+        BotonesMenu("Creditos", (screenWidth - 300) / 2, 390),          // Texto para el botï¿½n 2
+        BotonesMenu("Salir", (screenWidth - 300) / 2, 470)              // Texto para el botï¿½n 3
     };
 
     int currentKeyboardSelection = 0;
 
-    SetExitKey(KEY_NULL); // Para manejar el cierre manualmente o por el botón "Salir"
+    SetExitKey(KEY_NULL); // Para manejar el cierre manualmente o por el botï¿½n "Salir"
 
     while (!WindowShouldClose()) {
-        // --- Lógica de Input ---
+        // --- Lï¿½gica de Input ---
         if (IsKeyPressed(KEY_DOWN)) {
             currentKeyboardSelection = (currentKeyboardSelection + 1) % numBotones;
         }
@@ -74,25 +80,25 @@ int main()
             // Opcional: cambiar estado a PRESSED visualmente por un momento
             // botones[actionTriggeredBy].estado = PRESSED;
             // EndDrawing(); BeginDrawing(); // Forzar redibujado si quieres ver el PRESSED
-            // WaitTime(0.1); // Pequeña pausa
+            // WaitTime(0.1); // Pequeï¿½a pausa
 
             switch (actionTriggeredBy) {
                 case 0: // Jugar
                     title = false;
                     BotonesMenu::DescargarTextura(); // Descargar antes de cambiar de "escena" si es necesario
                     EscenaJuego();
-                    BotonesMenu::CargarTextura("resources/Botones.png"); // Recargar para el menú
+                    BotonesMenu::CargarTextura("resources/Botones.png"); // Recargar para el menï¿½
                     title = true;
                     break;
                 case 1: // Instrucciones
                     EscenaInstrucciones();
                     break;
-                case 2: // Créditos
+                case 2: // Crï¿½ditos
                     EscenaCreditos();
                     break;
                 case 3: // Salir
                     // CloseWindow(); // No es necesario si el bucle termina
-                    // Ya no se necesita 'return 0;' aquí, el bucle terminará
+                    // Ya no se necesita 'return 0;' aquï¿½, el bucle terminarï¿½
                     goto end_main_loop; // Salir del bucle while
             }
         }
@@ -106,13 +112,13 @@ int main()
             DrawTexture(
                 tituloTexture,
                 screenWidth / 2 - tituloTexture.width / 2,
-                50,
+                -10,
                 WHITE
             );
         }
 
         for (int i = 0; i < numBotones; i++) {
-            botones[i].Draw(); // El Draw del botón ahora incluye el texto
+            botones[i].Draw(); // El Draw del botï¿½n ahora incluye el texto
         }
 
         EndDrawing();
@@ -121,6 +127,8 @@ int main()
 end_main_loop:; // Etiqueta para el goto
 
     // --- Descarga de recursos ---
+    sonidosCaida.Descargar();
+    CloseAudioDevice();
     UnloadTexture(Fondo);
     UnloadTexture(FichaRoja);
     UnloadTexture(FichaAmarilla);

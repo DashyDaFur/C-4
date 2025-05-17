@@ -2,9 +2,12 @@
 #include <cstring> // strcpy y memset
 #include <string>  // std::string y std::to_string
 #include "Escenas.hpp"
+#include "Sonidos.hpp"
 #include "juego.hpp"
 
 #define MAX_NAME_LENGTH 13
+
+extern Sonidos sonidosCaida;
 
 // Texturas globales de main.cpp
 extern Texture2D FichaRoja;
@@ -31,7 +34,7 @@ int board[BOARD_GAME_ROWS * BOARD_GAME_COLS];
 int currentPlayer;
 bool gameOver;
 int winner;
-int hoverColumn; // Para el feedback visual del ratón (opcional, se podría quitar)
+int hoverColumn; // Para el feedback visual del ratï¿½n (opcional, se podrï¿½a quitar)
 int selectedColumnKeyboard; // Columna seleccionada por el teclado
 char jugador1NombreGlobal[MAX_NAME_LENGTH + 1];
 char jugador2NombreGlobal[MAX_NAME_LENGTH + 1];
@@ -62,6 +65,8 @@ bool DropPiece(int col, int player)
         {
             int dropped_pos_1d = r * BOARD_GAME_COLS + col;
             board[dropped_pos_1d] = player;
+
+            sonidosCaida.ReproducirAleatorio();
 
             if (Cuatro(dropped_pos_1d, player, board))
             {
@@ -135,7 +140,7 @@ void DrawPieces()
                     currentTokenTexture,
                     { BOARD_OFFSET_X + c * CELL_SIZE + (CELL_SIZE - currentTokenTexture.width * scale) / 2,
                       BOARD_OFFSET_Y + r * CELL_SIZE + (CELL_SIZE - currentTokenTexture.height * scale) / 2 },
-                    0.0f, // rotación
+                    0.0f, // rotaciï¿½n
                     scale, // escala
                     WHITE // color
                 );
@@ -147,7 +152,7 @@ void DrawPieces()
 /*********************************************************************************/
 
 // Modificado para usar selectedColumnKeyboard para la ficha principal "fantasma"
-// y hoverColumn para un feedback visual secundario del ratón si se desea.
+// y hoverColumn para un feedback visual secundario del ratï¿½n si se desea.
 void DrawHoverAndSelectedPiece()
 {
     int columnToDrawPreview = -1;
@@ -157,7 +162,7 @@ void DrawHoverAndSelectedPiece()
         columnToDrawPreview = selectedColumnKeyboard; // Prioridad al teclado
     }
 
-    // Dibujar la ficha de previsualización seleccionada por teclado
+    // Dibujar la ficha de previsualizaciï¿½n seleccionada por teclado
     if (columnToDrawPreview != -1)
     {
         Texture2D currentTokenTexture = (currentPlayer == 1) ? FichaRoja : FichaAmarilla;
@@ -170,11 +175,11 @@ void DrawHoverAndSelectedPiece()
               BOARD_OFFSET_Y - CELL_SIZE + (CELL_SIZE - currentTokenTexture.height * scale) / 2 },
             0.0f,
             scale,
-            WHITE // Ficha sólida para la selección por teclado
+            WHITE // Ficha sï¿½lida para la selecciï¿½n por teclado
         );
     }
 
-    // Opcional: Dibujar una ficha "fantasma" más tenue para el hover del ratón, si es diferente de la selección del teclado
+    // Opcional: Dibujar una ficha "fantasma" mï¿½s tenue para el hover del ratï¿½n, si es diferente de la selecciï¿½n del teclado
     if (!gameOver && hoverColumn != -1 && hoverColumn != selectedColumnKeyboard)
     {
         Texture2D currentTokenTextureMouse = (currentPlayer == 1) ? FichaRoja : FichaAmarilla;
@@ -187,7 +192,7 @@ void DrawHoverAndSelectedPiece()
               BOARD_OFFSET_Y - CELL_SIZE + (CELL_SIZE - currentTokenTextureMouse.height * scaleMouse) / 2 },
             0.0f,
             scaleMouse,
-            Fade(WHITE, 0.5f) // Semi-transparente para el hover del ratón
+            Fade(WHITE, 0.5f) // Semi-transparente para el hover del ratï¿½n
         );
     }
 }
@@ -283,7 +288,7 @@ bool EscenaNombre(char* p1NameDest, char* p2NameDest)
             helpTextY += 25;
             DrawText("Presiona TAB para cambiar de jugador.", screenWidth / 2 - MeasureText("Presiona TAB para cambiar de jugador.", 18) / 2, helpTextY, 18, RAYWHITE);
             helpTextY += 25;
-            DrawText("Presiona ESC para volver al menú principal.", screenWidth / 2 - MeasureText("Presiona ESC para volver al menú principal.", 18) / 2, helpTextY, 18, RAYWHITE);
+            DrawText("Presiona ESC para volver al menu principal.", screenWidth / 2 - MeasureText("Presiona ESC para volver al menu principal.", 18) / 2, helpTextY, 18, RAYWHITE);
         EndDrawing();
         if(!firstFrameDone) firstFrameDone = true;
     }
@@ -300,18 +305,10 @@ void EscenaJuego()
     SetExitKey(KEY_ESCAPE);
 
     while (!WindowShouldClose()) {
-        // --- Lógica de Actualización ---
-        Vector2 mousePos = GetMousePosition();
-        hoverColumn = -1; // Resetear columna de hover del ratón
+        // --- LÃ³gica de ActualizaciÃ³n ---
+        hoverColumn = -1;
 
         if (!gameOver) {
-            // Feedback visual del ratón (opcional)
-            if (mousePos.x >= BOARD_OFFSET_X && mousePos.x < BOARD_OFFSET_X + BOARD_GAME_COLS * CELL_SIZE &&
-                mousePos.y >= BOARD_OFFSET_Y - CELL_SIZE && mousePos.y < BOARD_OFFSET_Y + BOARD_GAME_ROWS * CELL_SIZE) {
-                hoverColumn = (int)((mousePos.x - BOARD_OFFSET_X) / CELL_SIZE);
-            }
-
-            // Control por teclado
             if (IsKeyPressed(KEY_RIGHT)) {
                 selectedColumnKeyboard = (selectedColumnKeyboard + 1) % BOARD_GAME_COLS;
             }
@@ -322,7 +319,7 @@ void EscenaJuego()
                 }
             }
 
-            // Soltar ficha con Enter o Flecha Abajo (usando selectedColumnKeyboard)
+            // Soltar ficha con Enter o Flecha Abajo
             if (IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_DOWN)) {
                 if (DropPiece(selectedColumnKeyboard, currentPlayer)) {
                     if (!gameOver) {
@@ -330,25 +327,13 @@ void EscenaJuego()
                     }
                 }
             }
-            // Opcional: Mantener la posibilidad de soltar con el ratón si hoverColumn es válido
-            // y no se ha usado el teclado recientemente (esto puede complicar la UX, considera si lo quieres)
-            /*
-            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && hoverColumn != -1) {
-                if (DropPiece(hoverColumn, currentPlayer)) { // Usar hoverColumn para el clic del ratón
-                    if (!gameOver) {
-                        currentPlayer = (currentPlayer == 1) ? 2 : 1;
-                        selectedColumnKeyboard = hoverColumn; // Sincronizar la selección del teclado con el último clic del ratón
-                    }
-                }
-            }
-            */
         }
 
         if (IsKeyPressed(KEY_R)) {
             ResetGame();
         }
         if (IsKeyPressed(KEY_ESCAPE)) {
-             break;
+            break;
         }
 
         // --- Dibujado ---
@@ -357,16 +342,16 @@ void EscenaJuego()
 
         DrawBoard();
         DrawPieces();
-        DrawHoverAndSelectedPiece(); // MODIFICADO para dibujar la pieza seleccionada por teclado y opcionalmente la de hover del ratón
+        DrawHoverAndSelectedPiece(); // Dibujar la pieza seleccionada por teclado
 
-        // --- UI: Información del Juego ---
+        // --- UI: InformaciÃ³n del Juego ---
         float uiPanelX = BOARD_OFFSET_X + BOARD_GAME_COLS * CELL_SIZE + 20;
         float uiPanelY = BOARD_OFFSET_Y;
 
         DrawText(jugador1NombreGlobal, uiPanelX, uiPanelY, 20, RAYWHITE);
-        DrawTextureEx(FichaRoja, {uiPanelX + MeasureText(jugador1NombreGlobal, 20) + 10, uiPanelY - 5}, 0.0f, TOKEN_RADIUS*2 / FichaRoja.height *0.5f, WHITE);
+        DrawTextureEx(FichaRoja, {uiPanelX + MeasureText(jugador1NombreGlobal, 20) + 10, uiPanelY - 5}, 0.0f, TOKEN_RADIUS * 2 / FichaRoja.height * 0.5f, WHITE);
         DrawText(jugador2NombreGlobal, uiPanelX, uiPanelY + 30, 20, RAYWHITE);
-        DrawTextureEx(FichaAmarilla, {uiPanelX + MeasureText(jugador2NombreGlobal, 20) + 10, uiPanelY + 25}, 0.0f, TOKEN_RADIUS*2 / FichaAmarilla.height * 0.5f, WHITE);
+        DrawTextureEx(FichaAmarilla, {uiPanelX + MeasureText(jugador2NombreGlobal, 20) + 10, uiPanelY + 25}, 0.0f, TOKEN_RADIUS * 2 / FichaAmarilla.height * 0.5f, WHITE);
 
         std::string statusText;
         if (gameOver) {
@@ -382,11 +367,7 @@ void EscenaJuego()
             DrawText("ENTER o ABAJO para soltar", uiPanelX, uiPanelY + 135, 18, LIGHTGRAY);
         }
 
-        DrawText("Presiona ESC para volver al menú", uiPanelX, screenHeight - 60, 18, RAYWHITE);
-
-        //float controlesScale = 0.3f;
-        //DrawTextureEx(Controles, {uiPanelX, uiPanelY + 180}, 0.0f, controlesScale, WHITE); // Ajustar Y para más espacio
-        //DrawText("Controles", uiPanelX + (Controles.width * controlesScale - MeasureText("Controles",15))/2 , uiPanelY + 180 + Controles.height*controlesScale + 5, 15, RAYWHITE);
+        DrawText("Presiona ESC para volver al menu", uiPanelX, screenHeight - 60, 18, RAYWHITE);
 
         EndDrawing();
     }
@@ -408,7 +389,7 @@ void EscenaInstrucciones()
         DrawText("En el juego, usa las FLECHAS IZQUIERDA y DERECHA para elegir columna.", screenWidth/2 - MeasureText("En el juego, usa las FLECHAS IZQUIERDA y DERECHA para elegir columna.", 18)/2, 220, 18, LIGHTGRAY);
         DrawText("Presiona ENTER o FLECHA ABAJO para soltar tu ficha.", screenWidth/2 - MeasureText("Presiona ENTER o FLECHA ABAJO para soltar tu ficha.", 18)/2, 250, 18, LIGHTGRAY);
         DrawText("Presiona 'R' en el juego para reiniciar la partida.", screenWidth/2 - MeasureText("Presiona 'R' en el juego para reiniciar la partida.", 18)/2, 280, 18, LIGHTGRAY);
-        DrawText("Presiona la tecla ESC para volver al menú", screenWidth/2 - MeasureText("Presiona la tecla ESC para volver al menú", 15)/2, screenHeight - 60, 15, RAYWHITE);
+        DrawText("Presiona la tecla ESC para volver al menu", screenWidth/2 - MeasureText("Presiona la tecla ESC para volver al menu", 15)/2, screenHeight - 60, 15, RAYWHITE);
         EndDrawing();
          if (IsKeyPressed(KEY_ESCAPE)) {
              break;
@@ -426,16 +407,16 @@ void EscenaCreditos()
         BeginDrawing();
         DrawTextureEx(Fondo, (Vector2){0, 0}, 0.0f, 1.0f, WHITE);
         DrawText("CREDITOS:", screenWidth/2 - MeasureText("CREDITOS:", 20)/2, 30, 20, RAYWHITE);
-        DrawText("Programa elaborado como proyecto final de Programación de", screenWidth/2 - MeasureText("Programa elaborado como proyecto final de Programación de", 20)/2, 100, 20, RAYWHITE);
-        DrawText("Computadoras de la Licenciatura en Ciencias de la Computación", screenWidth/2 - MeasureText("Computadoras de la Licenciatura en Ciencias de la Computación", 20)/2, 130, 20, RAYWHITE);
+        DrawText("Programa elaborado como proyecto final de Programacion de", screenWidth/2 - MeasureText("Programa elaborado como proyecto final de Programacion de", 20)/2, 100, 20, RAYWHITE);
+        DrawText("Computadoras de la Licenciatura en Ciencias de la Computacion", screenWidth/2 - MeasureText("Computadoras de la Licenciatura en Ciencias de la Computacion", 20)/2, 130, 20, RAYWHITE);
         DrawText("de la Universidad de Sonora.", screenWidth/2 - MeasureText("de la Universidad de Sonora.", 20)/2, 160, 20, RAYWHITE);
         DrawText("Presentado el 17 de mayo de 2024.", screenWidth/2 - MeasureText("Presentado el 17 de mayo de 2024.", 20)/2, 250, 20, RAYWHITE);
         DrawText("Desarrolladores:", screenWidth/2 - MeasureText("Desarrolladores:", 20)/2, 300, 20, RAYWHITE);
-        DrawText("-DANIEL LEINAD DOMÍNGUEZ CALVARIO", screenWidth/2 - MeasureText("-DANIEL LEINAD DOMÍNGUEZ CALVARIO", 20)/2, 350, 20, RAYWHITE);
+        DrawText("-DANIEL LEINAD DOMINGUEZ CALVARIO", screenWidth/2 - MeasureText("-DANIEL LEINAD DOMINGUEZ CALVARIO", 20)/2, 350, 20, RAYWHITE);
         DrawText("-ALEJANDRO CORDERO FRAGA", screenWidth/2 - MeasureText("-ALEJANDRO CORDERO FRAGA", 20)/2, 380, 20, RAYWHITE);
         DrawText("-JOSE RODRIGO ESPINOZA GARCIA", screenWidth/2 - MeasureText("-JOSE RODRIGO ESPINOZA GARCIA", 20)/2, 410, 20, RAYWHITE);
         DrawText("-ALBERTO GALVEZ MENDOZA", screenWidth/2 - MeasureText("-ALBERTO GALVEZ MENDOZA", 20)/2, 440, 20, RAYWHITE);
-        DrawText("Presiona la tecla ESC para volver al menú", screenWidth/2 - MeasureText("Presiona la tecla ESC para volver al menú", 15)/2, screenHeight - 60, 15, RAYWHITE);
+        DrawText("Presiona la tecla ESC para volver al menu", screenWidth/2 - MeasureText("Presiona la tecla ESC para volver al menu", 15)/2, screenHeight - 60, 15, RAYWHITE);
         EndDrawing();
          if (IsKeyPressed(KEY_ESCAPE)) {
              break;
